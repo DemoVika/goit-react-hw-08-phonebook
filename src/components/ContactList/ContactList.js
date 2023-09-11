@@ -1,5 +1,5 @@
 // import PropTypes from 'prop-types';
-// import css from './ContactList.module.css';
+import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAllContacts, selectFilter } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
@@ -19,12 +19,16 @@ export const ContactList = () => {
   };
 
   return (
-    <ul>
+    <ul className={css.list}>
       {visibleContacts(contacts, filter).map(item => {
         return (
           <li key={item.id}>
             {item.name} {item.number}{' '}
-            <button type="button" onClick={() => handleDeleteItems(item.id)}>
+            <button
+              className={css.button}
+              type="button"
+              onClick={() => handleDeleteItems(item.id)}
+            >
               Delete
             </button>
           </li>
