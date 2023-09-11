@@ -1,9 +1,13 @@
+import { Box } from '@chakra-ui/react';
+import React from 'react';
+
 const styles = {
   container: {
     minHeight: 'calc(100vh - 50px)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundImage: 'url("../images/fixiki-6.jpg")',
   },
   title: {
     fontWeight: 500,
@@ -14,8 +18,15 @@ const styles = {
 
 export default function Home() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Phonebook </h1>
-    </div>
+    <Box
+      backgroundImage="url('../images/fixiki-6.jpg')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+    >
+      <div style={styles.container}>
+        <img src="../images/fixiki-6.jpg" alt="ggg" />
+        <h1 style={styles.title}>Phonebook </h1>
+      </div>
+    </Box>
   );
 }
