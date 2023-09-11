@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import css from './contactList.module.css';
+// import PropTypes from 'prop-types';
+import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectFilter } from 'redux/selectors';
-import { deleteContact } from 'redux/operations';
+import { selectAllContacts, selectFilter } from 'redux/contacts/selectors';
+import { deleteContact } from 'redux/contacts/operations';
 
 const visibleContacts = (contacts, filter) => {
   return contacts.filter(contact => {
@@ -11,7 +11,7 @@ const visibleContacts = (contacts, filter) => {
 };
 
 export const ContactList = () => {
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectAllContacts);
   const filter = useSelector(selectFilter);
   const dispath = useDispatch();
   const handleDeleteItems = id => {
@@ -23,7 +23,7 @@ export const ContactList = () => {
       {visibleContacts(contacts, filter).map(item => {
         return (
           <li key={item.id}>
-            {item.name} {item.phone}{' '}
+            {item.name} {item.number}{' '}
             <button
               className={css.button}
               type="button"
@@ -38,11 +38,11 @@ export const ContactList = () => {
   );
 };
 
-ContactList.protoTypes = {
-  contacts: PropTypes.arrayOf({
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }),
-  filter: PropTypes.string.isRequired,
-};
+// ContactList.protoTypes = {
+//   contacts: PropTypes.arrayOf({
+//     name: PropTypes.string.isRequired,
+//     id: PropTypes.string.isRequired,
+//     number: PropTypes.string.isRequired,
+//   }),
+//   filter: PropTypes.string.isRequired,
+// };

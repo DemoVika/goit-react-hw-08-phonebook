@@ -1,13 +1,13 @@
-import css from './contactForm.module.css';
+import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectAllContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectAllContacts);
   const dispath = useDispatch();
 
   const handleInput = event => {
@@ -23,6 +23,7 @@ export const ContactForm = () => {
     event.preventDefault();
     if (contacts.find(item => item.name === name)) {
       alert(`${name} is already in contacts`);
+
       return;
     }
     const contact = {
@@ -48,6 +49,7 @@ export const ContactForm = () => {
           onChange={handleInput}
         />
       </label>{' '}
+      <br />
       <label>
         Number
         <input
